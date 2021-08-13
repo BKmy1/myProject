@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 1. 引入db.properties属性文件  -->
+	<properties resource="db.properties"></properties>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<!-- 4. 配置数据库连接信息，值为db.properties文件中的属性值 -->
+				<property name="url" value="${jdbc.url}"/>
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+			</dataSource>
+		</environment>		
+	</environments>
+			
+	<!-- 5. 引入映射器 -->
+	<mappers>
+		<mapper resource="com/my/Mapper/UserMapper.xml" />
+		<mapper resource="com/my/Mapper/PatientMapper.xml" />
+	</mappers>
+	
+</configuration>
